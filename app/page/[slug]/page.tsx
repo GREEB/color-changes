@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
 import data from '@/app/sites.json';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { format, formatDistance, formatRelative } from "date-fns";
+import { formatDistance } from "date-fns";
 import clsx from "clsx";
 import { Card } from "@/components/ui/card";
 

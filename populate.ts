@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import puppeteer from 'puppeteer';
 import axios from 'axios';
 import * as fs from 'fs';
 import path from 'path';
 import dayjs, { ManipulateType } from 'dayjs';
-import { timeStamp } from 'console';
 
 const url = 'youtube.com'; // Replace with the desired website
 const startDate = '2020-01-01';
@@ -92,7 +93,6 @@ function extractCSSVariablesFromHTML(html: string): { [key: string]: string } {
 // Fetch CSS variables using Puppeteer
 async function fetchSnapshotWithPuppeteer( timestamp: string): Promise<Snapshot | null> {
     makeArchiveUrl(timestamp)
-    return;
     const snapshotUrl = `http://web.archive.org/web/${timestamp}/${url}`;
     const htmlFilePath = path.join(outputDir, `snapshot_${timestamp}.html`);
     const browser = await puppeteer.launch({
@@ -122,7 +122,7 @@ async function fetchSnapshotWithPuppeteer( timestamp: string): Promise<Snapshot 
             htmlPath: htmlFilePath,
             cssVariables,
         };
-    } catch (error) {
+    } catch (error: any) {
         await browser.close();
         console.error(`Failed to fetch ${snapshotUrl}:`, error.message);
         return null;
